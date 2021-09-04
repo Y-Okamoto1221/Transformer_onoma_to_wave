@@ -10,25 +10,26 @@
     <left>
      <br>
      <font size="6"><b>Transformerを用いたオノマトペからの環境音合成</b></font>
-
 <!--<font size="5">使用した本物の音, 合成音のサンプル</font>-->
     <br> 
 　　<br>
     <br>
 
-    著者: <b>岡本 悠希，井本 桂右，高道 慎之介，山西 良典，福森 隆寛，山下 洋一</b><br>
-    <br>
-    論文: <a href="https://arxiv.org/abs/2102.05872">https://arxiv.org/abs/2102.05872</a>
+    著者: <b>岡本 悠希，井本 桂右，高道 慎之介，福森 隆寛，山下 洋一</b><br>
+    <!--<br>
+    論文: 岡本 悠希，井本 桂右，高道 慎之介，福森 隆寛，山下 洋一，"Transformerを用いたオノマトペからの環境音合成，" 日本音響学会2021年秋季研究発表会，pp. 943-946.<br>-->
     <br>
     <br>
     <p>
-    このページは系列変換モデル[1]を用いたオノマトペからの環境音合成手法[2]のデモページです．以下の2種類の手法により環境音を生成しています．
+    このページはTransformer [1]を用いたオノマトペからの環境音合成手法 [2]のデモページです．
+    <!--以下の2種類の手法により環境音を生成しています．
     </p>
     <ul>
   　　<li><b>オノマトペのみを入力とする環境音合成 (seq2seq)</b></li>
   　　<li><b>オノマトペと音響イベントラベルを入力とする環境音合成 (seq2seq + event label)</b></li>
         本手法ではオノマトペに加え，Decoderへの条件付けのために音響イベントラベルを使用します．
 　　</ul>
+   -->
     <p>
     環境音データとしては，RWCP 実環境音声・音響データベース (RWCP-SSD)[3]の中から，10種類の音響イベント（コーヒー豆をミルで挽く音，カップを叩く音，目覚まし時計の音，笛の音，マラカスの音，ドラムを叩く音，ひげ剃りの動作音，金属製のゴミ箱を叩く音，紙を引き裂く音，ベルを鳴らす音）を使用しました．オノマトペのデータは，RWCP-SSD-Onomatopoeia[4]を使用しました．
     </p>
@@ -39,252 +40,156 @@
     <table border="1", align="left">
     <tr>
     <th>Natural sound</th>
-    <th>KanaWave</th>
-    <th>Seq2seq<br><font color="#0000ff">(提案法)</font></th>
-    <th colspan="4">Seq2Seq + event label<br><font color="#0000ff">(提案法)</font></th>
+    <th>Seq2seq</th>
+    <th>Transformer<br><font color="#0000ff">(提案法)</font></th>
     </tr>
-    <td colspan="7"><left>&nbsp;オノマトペ；<b>チィッ (/ ch i: q /)</b></left></td>
+    <td colspan="3"><left>&nbsp;オノマトペ；<b>リリリリリリン (/ r i r i r i r i r i r i N /)</b></left></td>
     <tr>
-    <th>笛の音</th>
+    <!--<th>笛の音</th>-->
     <th class="td-css-bottom"></th>
     <th class="td-css-bottom"></th>
+    <!--
     <th>カップを叩く音</th>
     <th>ひげ剃りの動作音</th>
     <th>笛の音</th>
     <th>紙を引き裂く音</th>
+-->
     </tr>
     <tr>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/natural/whistle3_018_chi_q.wav" type="audio/wav">
+    <source src="./sound/natural/clock1_original_ririririririN.wav" type="audio/wav">
     Your browser does not support the audio element.
     </audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/KanaWave/chi_q.wav" type="audio/wav">
+    <source src="./sound/seq2seq/clock1_seq2seq_ririririririN.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
         <audio controls="">
-    <source src="./sound/seq2seq/whistle3_seq2seq_chi_q.wav" type="audio/wav">
+    <source src="./sound/Transformer/clock1_transformer_ririririririN.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/cup1/cup1_EventConditioning_chi_q.wav" type="audio/wav">
-    Your browser does not support the audio element.
-　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/shaver/shaver_EventConditioning_chi_q.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/whistle3/whistle3_EventConditioning_chi_q.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
-    </td>
-    <td class="td-css-top">
-    <center>
-    <audio controls="">
-    <source src="./sound/eventconditioning/tear/tear_EventConditioning_chi_q.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
-    </center>
     </td>
     </tr>
     </div>
-    <td colspan="7"><left>&nbsp;オノマトペ：<b> ボンッ (/ b o N q /)</b></left></td>
+    <td colspan="7"><left>&nbsp;オノマトペ：<b> ギュリギュリギュリ (/ gy u r i gy u r i gy u r i /)</b></left></td>
 
 
     <tr>
-    <th>ゴミ箱を叩く音</th>
     <th class="td-css-bottom"></th>
     <th class="td-css-bottom"></th>
-    <th>ドラムを叩く音</th>
-    <th>金属製のゴミ箱を叩く音</th>
     </tr>
     <tr>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/natural/trashbox_002_boNq.wav" type="audio/wav">
+    <source src="./sound/natural/coffmill_original_gyurigyurigyuri.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/KanaWave/boNq.wav" type="audio/wav">
+    <source src="./sound/seq2seq/coffmill_seq2seq_gyurigyurigyuri.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/seq2seq/drum_seed1000_seq2seq_boNq.wav" type="audio/wav">
+    <source src="./sound/Transformer/coffmill_transformer_gyurigyurigyuri.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/drum/drum_EventConditioning_boNq.wav" type="audio/wav">
-    Your browser does not support the audio element.
-　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/trashbox/trashbox_EventConditioning_boNq.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
     </td>
     </tr>
     </div>
-    <td colspan="7"><left>&nbsp;オノマトペ：<b> リンリン (/ r i N r i N /)</b></left></td>
+    <td colspan="7"><left>&nbsp;オノマトペ：<b> グオーン (/ gu o: N /)</b></left></td>
 
 
 
     <tr>
-    <th>ベルを鳴らす音</th>
     <th class="td-css-bottom"></th>
     <th class="td-css-bottom"></th>
-    <th>ベルを鳴らす音</th>
-    <th>目覚まし時計の音</th>
     </tr>
     <tr class="td-css-top">
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/natural/bells5_000_riNriN.wav" type="audio/wav">
+    <source src="./sound/natural/drum_original_guo_N.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/KanaWave/riNriN.wav" type="audio/wav">
+    <source src="./sound/seq2seq/drum_seq2seq_guo_.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/seq2seq/clock1_seed1000_seq2seq_riNriN.wav" type="audio/wav">
+    <source src="./sound/Transformer/drum_transformer_guo_N.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/bells5/bells5_EventConditioning_riNriN.wav" type="audio/wav">
-    Your browser does not support the audio element.
-　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/clock1/clock1_EventConditioning_riNriN.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
     </td>
     </tr>
     </div>
-    <td colspan="7"><left>&nbsp;オノマトペ：<b>ビイイイ (/ b i i i i /)</b></left></td>
+    <td colspan="3"><left>&nbsp;オノマトペ：<b>ブイイイイイイ (/ b u i i i i i i i i /)</b></left></td>
 
 
 
 
 
     <tr>
-    <th>ひげ剃りの動作音</th>
     <th class="td-css-bottom"></th>
     <th class="td-css-bottom"></th>
-    <th>紙を引き裂く音</th>
-    <th>笛の音</th>
-    <th>ひげ剃りの動作音</th>
     </tr>
     <tr>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/natural/shaver_034_biiii.wav" type="audio/wav">
+    <source src="./sound/natural/shaver_original_buiiiiiiii.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/KanaWave/biiii.wav" type="audio/wav">
+    <source src="./sound/seq2seq/shaver_seq2seq_buiiiiiiii.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/seq2seq/whistle3_seed3000_seq2seq_biiii.wav" type="audio/wav">
+    <source src="./sound/Transformer/shaver_transformer_buiiiiiiii.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
-    </td>
-    <td class="td-css-top">
-    <center>
-    <audio controls="">
-    <source src="./sound/eventconditioning/tear/tear_EventConditioning_biiii.wav" type="audio/wav">
-    Your browser does not support the audio element.
-　　</audio>
-    </center>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/whistle3/whistle3_EventConditioning_biiii.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/shaver/shaver_EventConditioning_biiii.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
     </td>
     </div>
     </tr>
-    <td colspan="7"><left>&nbsp;オノマトペ：<b>スャリスャリ (/ sh a r i sh a r i /)</b></left></td>
+    <td colspan="3"><left>&nbsp;オノマトペ：<b>ズザー (/ z u z a:  /)</b></left></td>
 
 
 
     <tr>
-    <th>マラカスの音</th>
     <th class="td-css-bottom"></th>
     <th class="td-css-bottom"></th>
-    <th>マラカスの音</th>
-    <th>コーヒー豆をミルで挽く音</th>
     </tr>
     <tr>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/natural/maracas_041_sharishari.wav" type="audio/wav">
+    <source src="./sound/natural/tear_original_zuza_.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/KanaWave/sharishari.wav" type="audio/wav">
+    <source src="./sound/seq2seq/tear_seq2seq_zuza_.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
     </td>
     <td class="td-css-top">
     <audio controls="">
-    <source src="./sound/seq2seq/maracas_seq2seq_sharishari.wav" type="audio/wav">
+    <source src="./sound/Transformer/tear_transformer_zuza_.wav" type="audio/wav">
     Your browser does not support the audio element.
 　　</audio>
-    </td>
-    <td class="td-css-top">
-    <audio controls="">
-    <source src="./sound/eventconditioning/maracas/maracas_EventConditioning_sharishari.wav" type="audio/wav">
-    Your browser does not support the audio element.
-　　</audio>
-    </td>
-    <td class="td-css-top">
-    <center>
-    <audio controls="">
-    <source src="./sound/eventconditioning/coffmill/coffmill_EventConditioning_sharishari.wav" type="audio/wav">
-    Your browser does not support the audio element.
-    </audio>
-    </center>
     </td>
     </tr>
     </div>
@@ -294,10 +199,10 @@
     <p>
     <br>
     <br>
-    [1] Ilya Sutskever, Oriol Vinyalsa and Quoc V. Le, "Sequence to Sequence Learning with Neural Networks," arXiv preprint, arXiv:1409.3215, 2014. <br> 
-    [2] Yuki Okamoto, Keisuke Imoto, Shinnosuke Takamichi, Ryosuke Yamanishi, Takahiro Fukumori, and Yoichi Yamashita, "Onoma-to-wave: Environmental Sound Synthesis from Onomatopoeic Words," arXiv preprint, arXiv:2102.05872, 2021. <br>
+    [1] A. Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A. N. Gomez, L. Kaiser, "Attention is all You need," Proc. NIPS, pp. 6000-6010, 2017. <br> 
+    [2] 岡本 悠希，井本 桂右，高道 慎之介，福森 隆寛，山下 洋一，"Transformerを用いたオノマトペからの環境音合成，" 日本音響学会2021年秋季研究発表会，pp. 943-946.<br>
     [3] S. Nakamura, K. Hiyane, F. Asano, and T. Endo, “Acoustical Sound Database in Real Environments for Sound Scene Understanding and Hands-free Speech Recognition,” Proc. Language Resources and Evaluation Conference (LREC), pp. 965–968, 2000.<br>
-    [4] Yuki Okamoto, Keisuke Imoto, Shinnosuke Takamichi, Ryosuke Yamanishi, Takahiro Fukumori, and Yoichi Yamashita, "RWCP-SSD-Onomatopoeia: Onomatopoeic Word Dataset for Environmental Sound Synthesis," Proc. Detection and Classification of Acoustic Scenes and Events (DCASE), pp. 125-129, 2020. 
+    [4] Yuki Okamoto, Keisuke Imoto, Shinnosuke Takamichi, Ryosuke Yamanishi, Takahiro Fukumori, and Yoichi Yamashita, "RWCP-SSD-Onomatopoeia: Onomatopoeic Word Dataset for Environmental Sound Synthesis," Proc. Detection and Classification of Acoustic Scenes and Events (DCASE), pp. 125-129, 2020.
     </p>
     </left>
  
